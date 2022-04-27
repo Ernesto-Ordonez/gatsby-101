@@ -2,6 +2,10 @@
 title: "Best Meows"
 datePublished: "2022-01-12"
 author: "Loki the Cat"
+hero_image: "./image1.jpg"
+hero_image_alt: "A tabby cat prancing on a ledge"
+hero_image_credit_text: "Timothy Meinberg"
+hero_image_credit_link: "https://unsplash.com/photos/AL2-t0GrSko"
 ---
 This is my first blog post! Isn't it *great*?
 Some of my **favorite** things are:
@@ -15,6 +19,6 @@ But you can also use one page component to create multiple pages. Instead of har
 
 ## Key Gatsby Concept: File System Route API
 
-Gatsby’s [File System Route API](https://www.gatsbyjs.com/docs/reference/routing/file-system-route-api/ "Link a la documentación de Gatsby" "_blank") defines a special syntax for naming the files in your src/pages directory, which lets you dynamically create new pages for your site based on a collection of nodes in the data layer.
+Gatsby’s [File System Route API](https://www.gatsbyjs.com/docs/reference/routing/file-system-route-api/ "Link a la documentación de Gatsby") defines a special syntax for naming the files in your src/pages directory, which lets you dynamically create new pages for your site based on a collection of nodes in the data layer.
 
 For example, imagine your site had a bunch of Product nodes in the data layer. You could use the File System Route API to create one product page template component. Then, when you built your site, Gatsby would combine that page template with the data for each Product node and generate a new page for each product. And if you decided you needed to make changes to your product page, you’d only have to edit the template component, and Gatsby would update all your product pages the next time it rebuilt the site.
