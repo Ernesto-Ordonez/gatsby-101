@@ -1,17 +1,15 @@
 // En este archivo se detalla como importar data cuando no se trata de un "building-block" sino de un page component
 import * as React from "react"
-import Layout from "../components/layout"
+import Layout from "../../components/layout"
 
 // Paso 1: Importamos la tag "graphql" del paquete "gastby"
-import { graphql } from 'gatsby'
-
-// Para poder renderizar archivos .mdx correctamente usamos el plugin
-import { MDXRenderer } from "gatsby-plugin-mdx"
+// También agregamos el Link component (para beneficios de performance vs. solo usar un anchor de HTML)
+import { graphql, Link } from 'gatsby'
 
 const BlogPage = ({ data }) => {
     return (
         // En el ejemplo esto esta anidado en un <div>, no es necesario pero es importante recordar que con React solo podemos devolver un parent
-        <Layout pageTitle="Blog" pageHeading="Our Blog">
+        <Layout pageTitle="Blog" pageHeading="Welcome to the Blog">
             <p>Blog posts will appear here!</p>
                 {
                 // Paso 3: Usamos los resultados del query en el componente:
@@ -19,13 +17,10 @@ const BlogPage = ({ data }) => {
                     // La "key" property es algo que necesita React
                     <article key={ node.id }>
                         <hr></hr>
-                        <h1>{ node.frontmatter.title }</h1>
+                        <Link to={ node.slug } title={ node.frontmatter.title }>
+                          <h2>{ node.frontmatter.title }</h2>
+                        </Link>
                         <h5>Published: { node.frontmatter.datePublished }, by { node.frontmatter.author }</h5>
-                        <h6>Last edited: { node.parent.modifiedTime }</h6>
-
-                        <MDXRenderer>
-                            { node.body }
-                        </MDXRenderer>
                         
                     </article>
                 ))
@@ -60,7 +55,7 @@ export const query = graphql`
         title
       }
       id
-      body
+      slug
       parent {
         ... on File {
           modifiedTime(formatString: "dddd, MMMM Do YYYY")

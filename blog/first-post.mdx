@@ -8,3 +8,13 @@ Some of my **favorite** things are:
 * Petting dogs
 * Singing
 * Eating potato-based foods
+
+When you build your Gatsby site, Gatsby creates a new route for each page component in your src/pages directory. So far, you’ve only been building one page per file: the index.js file creates the Home page, the about.js file creates the About page, and the blog.js file creates the Blog page.
+
+But you can also use one page component to create multiple pages. Instead of hard-coding all the contents, you’ll create a template to outline the basic structure of your page, and then Gatsby can dynamically add in the specific data for each page at build time. To do that, you’ll use Gatsby’s File System Route API, which lets you create routes dynamically by naming your page files with a special syntax.
+
+## Key Gatsby Concept: File System Route API
+
+Gatsby’s [File System Route API](https://www.gatsbyjs.com/docs/reference/routing/file-system-route-api/ "Link a la documentación de Gatsby" "_blank") defines a special syntax for naming the files in your src/pages directory, which lets you dynamically create new pages for your site based on a collection of nodes in the data layer.
+
+For example, imagine your site had a bunch of Product nodes in the data layer. You could use the File System Route API to create one product page template component. Then, when you built your site, Gatsby would combine that page template with the data for each Product node and generate a new page for each product. And if you decided you needed to make changes to your product page, you’d only have to edit the template component, and Gatsby would update all your product pages the next time it rebuilt the site.
